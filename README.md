@@ -6,7 +6,7 @@ Ce fichier décrit le projet **carbsimulator** qui vise à créer un package pyt
 
 Pour exécuter les scripts dans ce fichier certaines bibliothèques python sont nécessaires, exécuter la commande suivante dans votre env python avant de commencer :
 ```
-pip install -r requirements.txt
+pip install .
 ```
 
 ## Utilisation
