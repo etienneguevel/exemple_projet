@@ -11,22 +11,28 @@ def calculate():
             "boeuf": "Combien de kg de boeuf avez-vous utilisé ?\n",
             "viande": "Combien de kg d'autres viandes avez-vous utilisé ?\n",
             "alcool": "Combien de litres de boissons alcoolisées avez-vous servis ?\n",
-            "sodas": "Combien de litres de boissons non-alcoolisées (autre que de l'eau) avez-vous servis ?\n",
+            "sodas": 
+                "Combien de litres de boissons non-alcoolisées"\
+                "(autre que de l'eau) avez-vous servis ?\n",
         },
         "energie": {
-            "type": "Quel type d'énergie utilisez-vous (écrire : fioul, gaz, granules, electricite) ?\n",
+            "type": 
+            "Quel type d'énergie utilisez-vous"\
+            "(écrire : fioul, gaz, granules, electricite) ?\n",
             "qty": "Quantite (en kWh) ?"
         },
     }
 
     while True:
-        choice = input("Quelle type d'évaluation souhaitez vous faire (écrire : hebdomadaire, mensuelle ou annuelle) ?\n")
+        choice = input(
+            "Quelle type d'évaluation souhaitez vous faire"\
+            "(écrire : hebdomadaire, mensuelle ou annuelle) ?\n"
+        )
         if choice in ["hebdomadaire", "mensuelle", "annuelle"]:
             break
 
-        else:
-            print("Indiquez une réponse dans celles proposées.")
-    
+        print("Indiquez une réponse dans celles proposées.")
+
     for ty in questions:
         print(f"\n\nCatégorie : {ty}")
         for subty in questions.get(ty):
