@@ -5,4 +5,5 @@ def parse_requirements(filename):
         return [line.strip() for line in f if line.strip() and not line.strip().startswith("#")]
 
 setup(
+    install_requires=parse_requirements("requirements.txt"),
 )
