@@ -1,6 +1,25 @@
+import pytest
 from chempkg.mol import Molecule
-from chempkg.atom import *
+from chempkg.atom import C, H, O, Na, Cl, F, N, P, S
 
+def test_molecule_creation():
+    m = Molecule("C2H5OH")
+    assert m.formula == "C2H5OH"
+
+def test_atoms_count():
+    m = Molecule("C2H5OH")
+    atoms = m.atoms
+    assert atoms[C] == 2
+    assert atoms[H] == 6
+    assert atoms[O] == 1
+
+def test_molecule_weight():
+    m = Molecule("NaCl")
+    assert m.weight == Na.weight + Cl.weight
+
+def test_unknown_atom():
+    with pytest.raises(ValueError):
+        Molecule("C2H5X")
 
 MOLECULES = [
     ("C5H8O", {C: 5, H: 8, O: 1}),
@@ -20,7 +39,3 @@ def test_molecules():
 
         for at, num in expected_atoms.items():
             assert num == mol.atoms.get(at)
-        
-    
-if __name__ == "__main__":
-    test_molecules()

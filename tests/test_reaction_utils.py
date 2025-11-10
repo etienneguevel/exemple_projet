@@ -59,9 +59,5 @@ def test_figure_plot():
     HERE = Path(__file__).parent
     _ = kinetic_decomp(0.1, 0.5, 5, 10, HERE / "test.png")
     assert os.path.isfile(HERE / "test.png")
+    os.remove(HERE / "test.png")
 
-
-if __name__ == "__main__":
-    test_valid_reaction()
-    test_kinetic_decomp()
-    test_figure_plot()

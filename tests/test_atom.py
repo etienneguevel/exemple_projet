@@ -17,30 +17,42 @@ ATOMS =[
     (("Er", 87, 223.,), ('1s2', '2s2', '2p6', '3s2', '3p6', '4s2', '3d10', '4p6', '5s2', '4d10', '5p6', '6s2', '4f14', '5d10', '6p6', '7s1')),
 ]
 
-def test_Atom():
-
-    atoms = []
-
-    for (name, num_electron, weight), elec_config in ATOMS:
+def test_atom_base_attributes():
+    for (name, num_electron, weight), _ in ATOMS:
         at = Atom(name=name, weight=weight, num_electron=num_electron)
         # assert the basic attributes are well defined
         assert at.name == name
         assert at.num_electron == num_electron
         assert at.weight == weight
+
+def test_atom_elec_config():
+    for (name, num_electron, weight), elec_config in ATOMS:
+        at = Atom(name=name, weight=weight, num_electron=num_electron)
+        # test if the elec_config is as expected
         assert at.elec_config == elec_config
 
+def test_atom_methods():
+    atoms = []
+
+    for (name, num_electron, weight), _ in ATOMS:
+        at = Atom(name=name, weight=weight, num_electron=num_electron)
         # assert that the objects have __repr__ and __str__ methods
         assert hasattr(at, "__repr__")
         assert hasattr(at, "__str__")
 
+        # check if the str form of atom is as expected
         for t in (name, num_electron, weight):
             assert str(t) in str(at)
 
         atoms.append(at)
-    
-    # test the eq
+
+    # test the eq method
     assert atoms[0] == atoms[0]
     assert atoms[1] != atoms[0]
 
+    
+
 if __name__ == "__main__":
-    test_Atom()
+    test_atom_base_attributes()
+    test_atom_elec_config()
+    test_atom_methods()
